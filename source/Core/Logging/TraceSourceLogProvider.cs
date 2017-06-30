@@ -22,11 +22,17 @@ namespace IdentityAdmin.Logging
     /// <summary>
     /// ImplementatiTraceSourceLoggerILogProvidervider"/> that uses <see cref="IdentityServer3"/>.
     /// </summary>
-    public class TraceSourceLogProvider : ILogProvider
-    {
-        public ILog GetLogger(string name)
-        {
-            return new TraceSourceLogger(name);
+    public class TraceSourceLogProvider : ILogProvider {
+        public Logger GetLogger(string name) {
+            return new TraceSourceLogger(name).Log;
+        }
+
+        public IDisposable OpenMappedContext(string key, string value) {
+            throw new NotImplementedException();
+        }
+
+        public IDisposable OpenNestedContext(string message) {
+            throw new NotImplementedException();
         }
     }
 
@@ -123,6 +129,13 @@ namespace IdentityAdmin.Logging
             {
                 Trace.CorrelationManager.ActivityId = Guid.NewGuid();
             }
+        }
+
+        public bool Log(LogLevel logLevel, Func<string> messageFunc, Exception exception = null, params object[] formatParameters) {
+            if (exception != null)
+                Log(logLevel, messageFunc, exception);
+
+            return Log(logLevel, messageFunc);
         }
     }
 }

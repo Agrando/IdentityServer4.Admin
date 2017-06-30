@@ -22,6 +22,7 @@ using System.ServiceModel.Security.Tokens;
 using Microsoft.Owin.Security.Jwt;
 using Owin;
 using Thinktecture.IdentityModel.Owin.ScopeValidation;
+using Microsoft.IdentityModel.Tokens;
 
 namespace IdentityAdmin.Configuration
 {
@@ -53,13 +54,14 @@ namespace IdentityAdmin.Configuration
 
         public override void Configure(IAppBuilder app)
         {
-            var jwtParams = new System.IdentityModel.Tokens.TokenValidationParameters
+            var jwtParams = new TokenValidationParameters
             {
                 NameClaimType = NameClaimType,
                 RoleClaimType = RoleClaimType,
                 ValidAudience = Audience,
                 ValidIssuer = Issuer,
             };
+            /*
             if (SigningCert != null)
             {
                 jwtParams.IssuerSigningToken = new X509SecurityToken(SigningCert);
@@ -73,6 +75,7 @@ namespace IdentityAdmin.Configuration
             app.UseJwtBearerAuthentication(new JwtBearerAuthenticationOptions
             {
                 TokenValidationParameters = jwtParams
+
             });
             app.RequireScopes(new ScopeValidationOptions
             {
@@ -81,6 +84,7 @@ namespace IdentityAdmin.Configuration
                         Scope
                 }
             });
+            */
             if (ClaimsTransformation != null)
             {
                 app.Use(async (ctx, next) =>
