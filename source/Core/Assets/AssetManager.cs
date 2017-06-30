@@ -48,7 +48,7 @@ namespace IdentityAdmin.Assets
             }
             return value;
         }
-        
+
         internal static string LoadResourceString(string name, object values)
         {
             return LoadResourceString(name, Map(values));
@@ -57,8 +57,8 @@ namespace IdentityAdmin.Assets
         static IDictionary<string, object> Map(object values)
         {
             var dictionary = values as IDictionary<string, object>;
-            
-            if (dictionary == null) 
+
+            if (dictionary == null)
             {
                 dictionary = new Dictionary<string, object>();
                 foreach (PropertyDescriptor descriptor in TypeDescriptor.GetProperties(values))

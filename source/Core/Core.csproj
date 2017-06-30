@@ -250,9 +250,6 @@
     <EmbeddedResource Include="Assets\Templates\identityresources\edit.html" />
     <EmbeddedResource Include="Assets\Templates\apiresources\list.html" />
     <EmbeddedResource Include="Assets\Templates\identityresources\list.html" />
-    <EmbeddedResource Include="Assets\Content\style.min.css">
-      <DependentUpon>style.css</DependentUpon>
-    </EmbeddedResource>
     <Content Include="Assets\Scripts\Libs\moment.js" />
     <Content Include="Assets\Scripts\Libs\sha.js" />
     <Content Include="Assets\Scripts\Libs\sha1.js" />
@@ -268,9 +265,9 @@
     <EmbeddedResource Include="Assets\Content\logo.jpg" />
     <EmbeddedResource Include="Assets\Content\logo.png" />
     <EmbeddedResource Include="Assets\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Assets\Content\style.css">
+    <EmbeddedResource Include="Assets\Content\style.css">
       <DependentUpon>style.less</DependentUpon>
-    </Content>
+    </EmbeddedResource>
     <Content Include="Assets\Scripts\App\ttidAdm.js" />
     <Content Include="Assets\Scripts\App\ttidAdmApp.js" />
     <Content Include="Assets\Scripts\App\ttidAdmClients.js" />
